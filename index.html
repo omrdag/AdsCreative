@@ -6,407 +6,336 @@
 <title>Meta Kreatif Stüdyo</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f3ef;color:#1a1a1a;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0ece6;color:#1a1a1a;min-height:100vh}
 
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:#fff;border-bottom:1px solid #e8e2da;position:sticky;top:0;z-index:100}
-.logo{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
-.logo-dot{width:9px;height:9px;border-radius:50%;background:#534AB7}
-.status{font-size:11px;color:#666;display:flex;align-items:center;gap:5px}
-.status-dot{width:7px;height:7px;border-radius:50%;background:#1D9E75}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:#fff;border-bottom:1px solid #e0d8ce;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.logo{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;letter-spacing:-.3px}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:#534AB7}
+.status{font-size:12px;color:#888;display:flex;align-items:center;gap:5px}
+.sdot{width:7px;height:7px;border-radius:50%;background:#1D9E75}
 
-.layout{display:grid;grid-template-columns:290px 1fr;min-height:calc(100vh - 49px)}
+.layout{display:grid;grid-template-columns:300px 1fr;min-height:calc(100vh - 53px)}
 
-/* SIDEBAR */
-.sidebar{background:#fff;border-right:1px solid #e8e2da;padding:16px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;height:calc(100vh - 49px);position:sticky;top:49px}
-.section-title{font-size:10px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+/* ─── SIDEBAR ─── */
+.sidebar{background:#fff;border-right:1px solid #e0d8ce;padding:18px;display:flex;flex-direction:column;gap:16px;overflow-y:auto;height:calc(100vh - 53px);position:sticky;top:53px}
+.slabel{font-size:10px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
 
-.img-drop{border:1.5px dashed #d0c8be;border-radius:10px;padding:14px;text-align:center;cursor:pointer;background:#faf8f5;transition:all .15s;position:relative}
-.img-drop:hover{border-color:#534AB7;background:#f0eef8}
+.img-drop{border:2px dashed #d0c8be;border-radius:12px;padding:18px;text-align:center;cursor:pointer;background:#faf8f5;transition:all .2s;position:relative}
+.img-drop:hover,.img-drop.drag{border-color:#534AB7;background:#f0eef8}
 .img-drop input{display:none}
-.img-drop-icon{font-size:24px;margin-bottom:6px}
-.img-drop p{font-size:12px;color:#888}
-.img-drop small{font-size:10px;color:#bbb;display:block;margin-top:3px}
+.drop-icon{font-size:28px;margin-bottom:8px}
+.drop-txt{font-size:13px;color:#888;margin-bottom:3px}
+.drop-sub{font-size:10px;color:#bbb}
 .img-thumb{width:100%;border-radius:8px;aspect-ratio:1;object-fit:cover;display:block;margin-bottom:6px}
+.img-name{font-size:11px;color:#888;text-align:center}
 
-.inp{width:100%;padding:8px 10px;font-size:13px;border:1px solid #e0d8ce;border-radius:8px;background:#fff;color:#1a1a1a;transition:border-color .15s}
+.inp{width:100%;padding:9px 11px;font-size:13px;border:1px solid #e0d8ce;border-radius:8px;background:#fff;color:#1a1a1a;transition:border-color .15s}
 .inp:focus{outline:none;border-color:#534AB7}
-.inp-gap{margin-bottom:6px}
+.gap{margin-bottom:6px}
 
-/* HOOK EDITOR */
-.hook-box{border:1px solid #e0d8ce;border-radius:10px;overflow:hidden;background:#fff}
-.hook-head{padding:8px 12px;border-bottom:1px solid #f0ebe4;display:flex;align-items:center;justify-content:space-between;background:#faf8f5}
-.hook-head-title{font-size:12px;font-weight:600;color:#2c2018}
-.hook-chars{font-size:10px;color:#999}
-.hook-ta{width:100%;padding:10px 12px;font-size:13px;border:none;background:#fff;color:#1a1a1a;resize:none;line-height:1.5;outline:none;min-height:72px}
-.hook-ta::placeholder{color:#bbb}
-.toolbar{padding:7px 10px;border-top:1px solid #f0ebe4;display:flex;gap:4px;flex-wrap:wrap;align-items:center}
-.toolbar-label{font-size:9px;color:#aaa;margin-right:2px;flex-shrink:0}
-.tbtn{padding:3px 9px;font-size:10px;border:1px solid #e0d8ce;border-radius:12px;cursor:pointer;background:#fff;color:#666;transition:all .15s;white-space:nowrap}
-.tbtn:hover{border-color:#999}
-.tbtn.on{background:#534AB7;color:#fff;border-color:#534AB7}
-.tbtn.on-dark{background:#2c2018;color:#fff;border-color:#2c2018}
+/* hook editor */
+.hook-box{border:1px solid #e0d8ce;border-radius:10px;overflow:hidden}
+.hook-head{padding:8px 12px;background:#faf8f5;border-bottom:1px solid #f0ebe4;display:flex;justify-content:space-between;align-items:center}
+.hook-head-t{font-size:12px;font-weight:600;color:#2c2018}
+.hook-chars{font-size:10px;color:#bbb}
+.hook-ta{width:100%;padding:10px 12px;font-size:13px;border:none;background:#fff;color:#1a1a1a;resize:none;outline:none;min-height:68px;line-height:1.5}
+.hook-ta::placeholder{color:#ccc}
+.tbar{padding:6px 10px;border-top:1px solid #f0ebe4;display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.tlbl{font-size:9px;color:#bbb;margin-right:2px}
+.tb{padding:3px 9px;font-size:10px;border:1px solid #e0d8ce;border-radius:12px;cursor:pointer;background:#fff;color:#777;transition:all .15s;white-space:nowrap}
+.tb:hover{border-color:#999}
+.tb.on{background:#534AB7;color:#fff;border-color:#534AB7}
+.tb.on2{background:#2c2018;color:#fff;border-color:#2c2018}
 .cdots{display:flex;gap:4px;margin-left:auto}
-.cdot{width:16px;height:16px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+.cdot{width:17px;height:17px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:border-color .15s}
 .cdot.on{border-color:#534AB7}
-.hook-note{padding:5px 12px;font-size:10px;color:#aaa;border-top:1px solid #f0ebe4;text-align:center;background:#faf8f5}
+.hook-note{padding:5px 12px;font-size:10px;color:#bbb;border-top:1px solid #f0ebe4;background:#faf8f5;text-align:center}
 
-/* STRATEGY */
 .strat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.strat-btn{padding:8px 10px;font-size:11px;border:1px solid #e0d8ce;border-radius:8px;cursor:pointer;background:#fff;color:#666;text-align:left;transition:all .15s;line-height:1.3}
+.strat-btn{padding:9px 10px;font-size:11px;border:1px solid #e0d8ce;border-radius:8px;cursor:pointer;background:#fff;color:#666;text-align:left;transition:all .15s;line-height:1.3}
 .strat-btn:hover{border-color:#999;background:#faf8f5}
-.strat-btn.on{border-color:#534AB7;background:#EEEDFE;color:#3C3489}
-.strat-emoji{display:block;font-size:16px;margin-bottom:3px}
+.strat-btn.on{border-color:#534AB7;background:#EEEDFE;color:#3C3489;font-weight:600}
+.se{display:block;font-size:16px;margin-bottom:3px}
 
-/* FORMATS */
 .fmt-row{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;user-select:none}
-.chk{width:16px;height:16px;border-radius:4px;border:1.5px solid #d0c8be;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.chk{width:17px;height:17px;border-radius:4px;border:1.5px solid #d0c8be;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .chk.on{background:#534AB7;border-color:#534AB7}
-.chk.on::after{content:'';width:7px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px);display:block}
-.fmt-name{font-size:12px;color:#1a1a1a;font-weight:500}
-.fmt-spec{font-size:10px;color:#aaa}
+.chk.on::after{content:'';width:8px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px);display:block}
+.fn{font-size:13px;color:#1a1a1a;font-weight:500}
+.fs{font-size:10px;color:#bbb}
 
-/* GEN BUTTON */
-.gen-btn{width:100%;padding:11px;background:#534AB7;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;letter-spacing:.2px}
-.gen-btn:hover{opacity:.9}
+.api-note{font-size:10px;color:#bbb;margin-top:4px;line-height:1.5}
+
+.gen-btn{width:100%;padding:12px;background:#534AB7;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;letter-spacing:.3px}
+.gen-btn:hover{opacity:.88}
 .gen-btn:disabled{opacity:.4;cursor:not-allowed}
-.spinner{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+.sp{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* CANVAS */
-.canvas{padding:20px;display:flex;flex-direction:column;gap:20px}
-.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 120px);gap:10px;color:#bbb}
-.empty-icon{font-size:40px;opacity:.3}
-.empty-txt{font-size:14px}
-.empty-sub{font-size:12px}
+/* ─── CANVAS ─── */
+.canvas{padding:24px;display:flex;flex-direction:column;gap:28px}
 
-.row-label{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e8e2da;display:flex;align-items:center;gap:8px}
-.format-tag{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500}
-.creative-row{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
-.section-sep{height:1px;background:#e8e2da}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 120px);gap:12px;color:#ccc}
+.empty-icon{font-size:48px;opacity:.25}
 
-/* PHONE */
-.phone{background:#fff;border-radius:14px;border:1px solid #e0d8ce;overflow:hidden;flex-shrink:0;box-shadow:0 2px 12px rgba(0,0,0,.07)}
-.phone-top{padding:8px 12px;border-bottom:1px solid #f0ebe4;display:flex;align-items:center;gap:8px}
-.p-av{width:26px;height:26px;border-radius:50%;background:#e0d8ce;flex-shrink:0}
-.p-name{font-size:11px;font-weight:600;color:#222}
-.p-sp{font-size:10px;color:#aaa}
-.p-dots{margin-left:auto;font-size:14px;color:#ccc;letter-spacing:2px}
-.phone-bot{padding:8px 12px;border-top:1px solid #f0ebe4;display:flex;align-items:center;justify-content:space-between}
-.p-cta{font-size:11px;font-weight:600;padding:5px 14px;border-radius:6px;border:none;cursor:pointer;color:#fff}
-.p-like{font-size:10px;color:#ccc}
-.phone-cap{padding:6px 12px;font-size:11px;color:#333;line-height:1.5;border-bottom:1px solid #f0ebe4}
-.ad-canvas{position:relative;overflow:hidden}
-.ad-canvas img{width:100%;display:block;object-fit:cover}
+.sec-head{font-size:12px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #e0d8ce;display:flex;align-items:center;gap:8px}
+.ftag{font-size:10px;padding:2px 9px;border-radius:10px;font-weight:600}
+.sep{height:1px;background:#e0d8ce}
+
+/* ─── BÜYÜK ÖNİZLEME ─── */
+.preview-area{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+
+/* FEED - büyük */
+.mock-feed{background:#fff;border-radius:16px;border:1px solid #e0d8ce;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);width:340px;flex-shrink:0}
+.mock-top{padding:10px 14px;border-bottom:1px solid #f0ebe4;display:flex;align-items:center;gap:10px}
+.m-av{width:32px;height:32px;border-radius:50%;background:#e0d8ce;flex-shrink:0}
+.m-name{font-size:12px;font-weight:700;color:#222}
+.m-sp{font-size:11px;color:#aaa}
+.m-dots{margin-left:auto;font-size:16px;color:#ccc;letter-spacing:2px}
+.mock-img{width:100%;aspect-ratio:1;object-fit:cover;display:block;position:relative}
+.ad-wrap{position:relative;overflow:hidden}
+.ad-wrap img{width:100%;display:block;object-fit:cover}
 .ad-ol{position:absolute;inset:0}
-.ad-badge{position:absolute;top:10px;left:10px;font-size:10px;font-weight:600;padding:3px 9px;border-radius:10px;color:#fff;z-index:5}
+.ad-badge{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;padding:4px 11px;border-radius:11px;color:#fff;z-index:5}
+.mock-cap{padding:10px 14px;font-size:12px;color:#333;line-height:1.6;border-bottom:1px solid #f0ebe4}
+.mock-bot{padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.m-cta{font-size:12px;font-weight:700;padding:7px 18px;border-radius:7px;border:none;cursor:pointer;color:#fff}
+.m-like{font-size:11px;color:#ccc}
 
-/* STORY */
-.story{border-radius:16px;overflow:hidden;position:relative;flex-shrink:0;background:#111;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-.story img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.story-ol{position:absolute;inset:0}
-.story-top{position:absolute;top:10px;left:10px;right:10px;z-index:5}
-.story-segs{display:flex;gap:3px;margin-bottom:6px}
-.story-seg{height:2.5px;flex:1;border-radius:2px;background:rgba(255,255,255,.3)}
-.story-seg.d{background:rgba(255,255,255,.9)}
-.story-user{display:flex;align-items:center;gap:5px}
-.s-av{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.3);border:1.5px solid #fff}
-.s-nm{font-size:10px;color:#fff;font-weight:600}
-.s-sp{font-size:9px;color:rgba(255,255,255,.6)}
-.story-cta{position:absolute;bottom:12px;left:12px;right:12px;z-index:5}
-.story-swipe{text-align:center;font-size:9px;color:rgba(255,255,255,.5);margin-bottom:4px}
-.story-btn{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:7px;text-align:center;font-size:11px;color:#fff;font-weight:600}
+/* STORY - büyük */
+.mock-story{border-radius:18px;overflow:hidden;position:relative;flex-shrink:0;background:#111;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+.mock-story img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.st-ol{position:absolute;inset:0}
+.st-top{position:absolute;top:12px;left:12px;right:12px;z-index:5}
+.st-segs{display:flex;gap:3px;margin-bottom:8px}
+.st-seg{height:3px;flex:1;border-radius:2px;background:rgba(255,255,255,.3)}
+.st-seg.d{background:rgba(255,255,255,.9)}
+.st-user{display:flex;align-items:center;gap:6px}
+.st-av{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.3);border:2px solid #fff}
+.st-nm{font-size:11px;color:#fff;font-weight:700}
+.st-sp{font-size:10px;color:rgba(255,255,255,.6)}
+.st-cta{position:absolute;bottom:14px;left:14px;right:14px;z-index:5}
+.st-swipe{text-align:center;font-size:10px;color:rgba(255,255,255,.5);margin-bottom:5px}
+.st-btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:22px;padding:9px;text-align:center;font-size:12px;color:#fff;font-weight:700}
+
+/* PORTRAIT */
+.mock-pt{background:#fff;border-radius:16px;border:1px solid #e0d8ce;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);width:280px;flex-shrink:0}
 
 /* CAROUSEL */
-.carousel-slides{display:flex;gap:6px;padding:8px}
-.ca-slide{flex:0 0 calc(53% - 3px);border-radius:10px;overflow:hidden;border:1px solid #e0d8ce;position:relative}
-.ca-slide.first{border-color:#534AB7;border-width:2px}
-.ca-slide img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
-.ca-foot{padding:6px 8px;background:#fff}
-.ca-title{font-size:11px;font-weight:600;color:#2c2018}
-.ca-sub{font-size:9px;color:#999;margin-top:1px}
-.ca-badge{position:absolute;top:6px;left:6px;font-size:9px;font-weight:600;padding:2px 7px;border-radius:8px;background:#534AB7;color:#fff;z-index:5}
-.ca-dots{display:flex;gap:4px;padding:3px 8px 6px}
+.mock-car{background:#fff;border-radius:16px;border:1px solid #e0d8ce;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);width:400px;flex-shrink:0}
+.car-slides{display:flex;gap:8px;padding:10px}
+.ca-sl{flex:0 0 calc(48% - 4px);border-radius:12px;overflow:hidden;border:1px solid #e0d8ce;position:relative}
+.ca-sl.first{border-color:#534AB7;border-width:2px}
+.ca-sl img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.ca-foot{padding:8px 10px;background:#fff}
+.ca-t{font-size:12px;font-weight:700;color:#2c2018}
+.ca-s{font-size:10px;color:#aaa;margin-top:2px}
+.ca-badge{position:absolute;top:7px;left:7px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:9px;background:#534AB7;color:#fff;z-index:5}
+.ca-dots{display:flex;gap:4px;padding:4px 10px 8px}
 
-/* COPY FIELDS */
-.copy-wrap{flex:1;min-width:180px;display:flex;flex-direction:column;gap:6px}
-.copy-fields{display:flex;flex-direction:column;gap:5px}
-.cfield{background:#faf8f5;border-radius:8px;padding:8px 10px;font-size:12px;color:#1a1a1a;cursor:pointer;border:1px solid transparent;transition:all .15s;line-height:1.5}
-.cfield:hover{border-color:#d0c8be;background:#f5f0ea}
-.cfield.ok{border-color:#1D9E75;background:#f0faf5}
-.cfield-lbl{font-size:9px;color:#aaa;margin-bottom:2px;text-transform:uppercase;letter-spacing:.4px}
-.cfield-val{font-size:12px;color:#333;line-height:1.4}
-.copy-hint{font-size:10px;color:#bbb;text-align:center;margin-top:2px}
-
-.warn-box{background:#FEF9EC;border:1px solid #FAC775;border-radius:8px;padding:8px 10px;font-size:11px;color:#633806;line-height:1.5}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .layout{grid-template-columns:1fr}
-  .sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid #e8e2da}
-}
+/* COPY PANEL */
+.copy-panel{flex:1;min-width:220px;display:flex;flex-direction:column;gap:8px}
+.cf{background:#fff;border-radius:10px;padding:10px 12px;font-size:12px;color:#1a1a1a;cursor:pointer;border:1.5px solid transparent;transition:all .15s;line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.cf:hover{border-color:#d0c8be;background:#faf8f5}
+.cf.ok{border-color:#1D9E75;background:#f0faf5}
+.cf-lbl{font-size:9px;color:#bbb;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+.cf-val{font-size:13px;color:#333;line-height:1.5}
+.copy-hint{font-size:11px;color:#bbb;text-align:center}
+.warn{background:#FEF9EC;border:1px solid #FAC775;border-radius:8px;padding:9px 12px;font-size:11px;color:#633806;line-height:1.6}
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="logo"><div class="logo-dot"></div>Meta Kreatif Stüdyo</div>
-  <div class="status"><div class="status-dot"></div><span id="statusTxt">AI hazır — görsel yükle ve başla</span></div>
+  <div class="status"><div class="sdot"></div><span id="statusTxt">Görsel yükle ve başla</span></div>
 </div>
 
 <div class="layout">
-
-<!-- SIDEBAR -->
 <div class="sidebar">
 
   <div>
-    <div class="section-title">Ürün görseli</div>
+    <div class="slabel">Ürün görseli</div>
     <div class="img-drop" id="dropZone" onclick="document.getElementById('imgFile').click()">
       <input type="file" id="imgFile" accept="image/*" onchange="handleFile(this)">
       <div id="dropContent">
-        <div class="img-drop-icon">🖼</div>
-        <p>Görsel yükle veya sürükle bırak</p>
-        <small>JPG · PNG · WEBP · GIF</small>
+        <div class="drop-icon">🖼</div>
+        <div class="drop-txt">Görsel yükle veya sürükle</div>
+        <div class="drop-sub">JPG · PNG · WEBP</div>
       </div>
     </div>
   </div>
 
   <div>
-    <div class="section-title">Ürün bilgisi</div>
-    <input class="inp inp-gap" id="prodName" placeholder="Ürün adı">
-    <input class="inp inp-gap" id="prodPrice" placeholder="Fiyat  (ör: 1.749 ₺)">
-    <input class="inp inp-gap" id="prodOldPrice" placeholder="Eski fiyat (varsa)">
+    <div class="slabel">Ürün bilgisi</div>
+    <input class="inp gap" id="prodName" placeholder="Ürün adı">
+    <input class="inp gap" id="prodPrice" placeholder="Fiyat  (ör: 1.749 ₺)">
+    <input class="inp gap" id="prodOldPrice" placeholder="Eski fiyat (varsa)">
     <input class="inp" id="prodBrand" placeholder="Marka adı">
   </div>
 
   <div>
-    <div class="section-title">Kanca metin — görsel üzeri</div>
+    <div class="slabel">Kanca metin — görsel üzeri</div>
     <div class="hook-box">
       <div class="hook-head">
-        <div class="hook-head-title">Görsel üzerine metin</div>
-        <div class="hook-chars" id="hookChars">0 / 80</div>
+        <div class="hook-head-t">Görsel üzerine yazı</div>
+        <div class="hook-chars" id="hc">0/80</div>
       </div>
-      <textarea class="hook-ta" id="hookText" maxlength="120" oninput="onHookInput()"
-        placeholder="Örn: Evinize sıcak bir dokunuş ✦&#10;veya: %50 indirim — sadece bugün!&#10;veya: 2 aydır kullanıyorum 👇&#10;&#10;Boş bırakırsan AI otomatik yazar."></textarea>
-      <div class="toolbar">
-        <span class="toolbar-label">Konum</span>
-        <button class="tbtn" data-pos="top-left" onclick="setPos(this)">↖ Üst sol</button>
-        <button class="tbtn on" data-pos="bottom-center" onclick="setPos(this)">↓ Alt orta</button>
-        <button class="tbtn" data-pos="bottom-left" onclick="setPos(this)">↙ Alt sol</button>
-        <button class="tbtn" data-pos="center" onclick="setPos(this)">⊙ Merkez</button>
+      <textarea class="hook-ta" id="hookText" maxlength="120" oninput="onHook()"
+        placeholder="Örn: Evinize sıcak bir dokunuş ✦&#10;veya: %50 indirim — sadece bugün!&#10;&#10;Boş bırakırsan AI otomatik yazar."></textarea>
+      <div class="tbar">
+        <span class="tlbl">Konum</span>
+        <button class="tb" data-pos="top-left" onclick="setPos(this)">↖ Üst sol</button>
+        <button class="tb on" data-pos="bot-center" onclick="setPos(this)">↓ Alt orta</button>
+        <button class="tb" data-pos="bot-left" onclick="setPos(this)">↙ Alt sol</button>
+        <button class="tb" data-pos="center" onclick="setPos(this)">⊙ Merkez</button>
       </div>
-      <div class="toolbar">
-        <span class="toolbar-label">Boyut</span>
-        <button class="tbtn" data-size="sm" onclick="setSize(this)">S</button>
-        <button class="tbtn on-dark" data-size="md" onclick="setSize(this)">M</button>
-        <button class="tbtn" data-size="lg" onclick="setSize(this)">L</button>
-        <button class="tbtn" data-size="xl" onclick="setSize(this)">XL</button>
+      <div class="tbar">
+        <span class="tlbl">Boyut</span>
+        <button class="tb" data-size="sm" onclick="setSize(this)">S</button>
+        <button class="tb on2" data-size="md" onclick="setSize(this)">M</button>
+        <button class="tb" data-size="lg" onclick="setSize(this)">L</button>
+        <button class="tb" data-size="xl" onclick="setSize(this)">XL</button>
         <div class="cdots">
-          <div class="cdot on" data-color="#ffffff" style="background:#fff;border-color:#ddd" onclick="setColor(this)" title="Beyaz"></div>
-          <div class="cdot" data-color="#111111" style="background:#111" onclick="setColor(this)" title="Siyah"></div>
-          <div class="cdot" data-color="#FFE066" style="background:#FFE066" onclick="setColor(this)" title="Sarı"></div>
-          <div class="cdot" data-color="#FF6B6B" style="background:#FF6B6B" onclick="setColor(this)" title="Kırmızı"></div>
-          <div class="cdot" data-color="#534AB7" style="background:#534AB7" onclick="setColor(this)" title="Mor"></div>
+          <div class="cdot on" data-c="#ffffff" style="background:#fff;border-color:#ddd" onclick="setCol(this)"></div>
+          <div class="cdot" data-c="#111111" style="background:#111" onclick="setCol(this)"></div>
+          <div class="cdot" data-c="#FFE066" style="background:#FFE066" onclick="setCol(this)"></div>
+          <div class="cdot" data-c="#FF6B6B" style="background:#FF6B6B" onclick="setCol(this)"></div>
+          <div class="cdot" data-c="#534AB7" style="background:#534AB7" onclick="setCol(this)"></div>
         </div>
       </div>
-      <div class="toolbar">
-        <span class="toolbar-label">Stil</span>
-        <button class="tbtn on" data-style="none" onclick="setStyle(this)">Düz</button>
-        <button class="tbtn" data-style="pill" onclick="setStyle(this)">Pill bg</button>
-        <button class="tbtn" data-style="shadow" onclick="setStyle(this)">Gölge</button>
-        <button class="tbtn" data-style="outline" onclick="setStyle(this)">Outline</button>
+      <div class="tbar">
+        <span class="tlbl">Stil</span>
+        <button class="tb on" data-st="none" onclick="setSt(this)">Düz</button>
+        <button class="tb" data-st="pill" onclick="setSt(this)">Pill bg</button>
+        <button class="tb" data-st="shadow" onclick="setSt(this)">Gölge</button>
+        <button class="tb" data-st="outline" onclick="setSt(this)">Outline</button>
       </div>
-      <div class="hook-note">Metin yazdıkça önizlemede anında görünür</div>
+      <div class="hook-note">Yazdıkça önizlemede anında görünür</div>
     </div>
   </div>
 
   <div>
-    <div class="section-title">Strateji</div>
+    <div class="slabel">Strateji</div>
     <div class="strat-grid">
-      <button class="strat-btn on" data-s="conversion" onclick="setStrat(this)"><span class="strat-emoji">🎯</span>Dönüşüm</button>
-      <button class="strat-btn" data-s="flash" onclick="setStrat(this)"><span class="strat-emoji">⚡</span>Flash satış</button>
-      <button class="strat-btn" data-s="ugc" onclick="setStrat(this)"><span class="strat-emoji">📱</span>UGC tarzı</button>
-      <button class="strat-btn" data-s="social" onclick="setStrat(this)"><span class="strat-emoji">⭐</span>Sosyal kanıt</button>
+      <button class="strat-btn on" data-s="conversion" onclick="setStrat(this)"><span class="se">🎯</span>Dönüşüm</button>
+      <button class="strat-btn" data-s="flash" onclick="setStrat(this)"><span class="se">⚡</span>Flash satış</button>
+      <button class="strat-btn" data-s="ugc" onclick="setStrat(this)"><span class="se">📱</span>UGC tarzı</button>
+      <button class="strat-btn" data-s="social" onclick="setStrat(this)"><span class="se">⭐</span>Sosyal kanıt</button>
     </div>
   </div>
 
   <div>
-    <div class="section-title">Formatlar</div>
-    <div class="fmt-row" data-f="feed" onclick="toggleFmt(this)"><div class="chk on"></div><div><div class="fmt-name">Feed kare</div><div class="fmt-spec">1080×1080 · 1:1</div></div></div>
-    <div class="fmt-row" data-f="story" onclick="toggleFmt(this)"><div class="chk on"></div><div><div class="fmt-name">Story / Reels</div><div class="fmt-spec">1080×1920 · 9:16</div></div></div>
-    <div class="fmt-row" data-f="portrait" onclick="toggleFmt(this)"><div class="chk on"></div><div><div class="fmt-name">Feed dikey</div><div class="fmt-spec">1080×1350 · 4:5</div></div></div>
-    <div class="fmt-row" data-f="carousel" onclick="toggleFmt(this)"><div class="chk on"></div><div><div class="fmt-name">Carousel</div><div class="fmt-spec">1080×1080 / kart</div></div></div>
+    <div class="slabel">Formatlar</div>
+    <div class="fmt-row" data-f="feed" onclick="togFmt(this)"><div class="chk on"></div><div><div class="fn">Feed kare</div><div class="fs">1080×1080 · 1:1</div></div></div>
+    <div class="fmt-row" data-f="story" onclick="togFmt(this)"><div class="chk on"></div><div><div class="fn">Story / Reels</div><div class="fs">1080×1920 · 9:16</div></div></div>
+    <div class="fmt-row" data-f="portrait" onclick="togFmt(this)"><div class="chk on"></div><div><div class="fn">Feed dikey</div><div class="fs">1080×1350 · 4:5</div></div></div>
+    <div class="fmt-row" data-f="carousel" onclick="togFmt(this)"><div class="chk on"></div><div><div class="fn">Carousel</div><div class="fs">1080×1080 / kart</div></div></div>
   </div>
 
   <div>
-    <div class="section-title">Anthropic API anahtarı</div>
-    <input class="inp" id="apiKey" type="password" placeholder="sk-ant-... (AI metin için)">
-    <p style="font-size:10px;color:#aaa;margin-top:4px;line-height:1.5">API anahtarı olmadan yerleşik metinler kullanılır. Anahtar tarayıcında kalır, hiçbir yere gönderilmez.</p>
+    <div class="slabel">API anahtarı (isteğe bağlı)</div>
+    <input class="inp" id="apiKey" type="password" placeholder="sk-ant-...">
+    <div class="api-note">Olmadan da çalışır. Varsa AI metinler yazar.</div>
   </div>
 
   <button class="gen-btn" id="genBtn" onclick="generate()">
-    <span id="genIcon">✦</span>
-    <span id="genTxt">Kreatif oluştur</span>
+    <span id="gi">✦</span><span id="gt">Kreatif oluştur</span>
   </button>
 
 </div>
 
-<!-- CANVAS -->
 <div class="canvas" id="canvas">
-  <div class="empty-state" id="emptyState">
+  <div class="empty" id="emptyState">
     <div class="empty-icon">✦</div>
-    <div class="empty-txt">Görsel yükle ve kreatif oluştur</div>
-    <div class="empty-sub">Kanca metni sol panelden düzenleyebilirsin</div>
+    <div style="font-size:15px;color:#bbb">Görsel yükle ve kreatif oluştur</div>
+    <div style="font-size:12px;color:#ccc;margin-top:4px">Sol panelden görsel seç, bilgileri doldur, butona bas</div>
   </div>
 </div>
-
 </div>
 
 <script>
-let imgData = null;
-let activeStrategy = 'conversion';
-let activeFormats = new Set(['feed','story','portrait','carousel']);
-let hookCfg = { pos:'bottom-center', size:'md', color:'#ffffff', style:'none' };
-let lastCopy = null;
+let imgData=null,activeS='conversion',activeFmts=new Set(['feed','story','portrait','carousel']);
+let hCfg={pos:'bot-center',size:'md',col:'#ffffff',st:'none'};
+let lastCopy=null;
 
-const SIZES = {sm:'12px',md:'14px',lg:'17px',xl:'22px'};
-const WEIGHTS = {sm:'500',md:'600',lg:'700',xl:'700'};
+const SZ={sm:'13px',md:'16px',lg:'20px',xl:'26px'};
+const SW={sm:'500',md:'600',lg:'700',xl:'800'};
 
-const S = {
-  conversion:{
-    badge:'%50 indirim', badgeBg:'#c9432a',
-    hook: n=>`${n} ile yaşam alanını dönüştür ✦`,
-    caption:(n,p)=>`${n} — kalite ve estetiğin buluştuğu nokta. ✅ Metal gövde ✅ Ücretsiz kargo ✅ 14 gün iade`,
-    cta:'Hemen Satın Al', ctaBg:'#2c2018',
-    storyHook:n=>`✨ En çok satılan\n${n}`,
-    carouselCaption:n=>`${n} koleksiyonunu keşfet. Her odaya uyum sağlar. 🏠`,
-    carouselCta:'Koleksiyonu Gör',
-    cards:['Öne çıkan','Metal gövde','%50 indirim'],
-    pillBg:'#EEEDFE', pillTxt:'#3C3489'
-  },
-  flash:{
-    badge:'⚡ Flash satış', badgeBg:'#E24B4A',
-    hook: n=>`⚡ 24 saat kaldı — kaçırma!`,
-    caption:(n,p)=>`⏰ FLASH SATIŞ — ${n} yarı fiyatına! 📦 Hızlı kargo · 🔄 14 gün iade garantisi`,
-    cta:'Fırsatı Yakala', ctaBg:'#E24B4A',
-    storyHook:n=>`⚡ FLASH SATIŞ\n%50 indirim`,
-    carouselCaption:n=>`Flash fiyat bitmeden al! ${n} şu an %50 indirimde. 🔥`,
-    carouselCta:'Fırsatı Yakala',
-    cards:['⚡ Flash fiyat','Sınırlı stok','Son şans!'],
-    pillBg:'#FCEBEB', pillTxt:'#A32D2D'
-  },
-  ugc:{
-    badge:'⭐ Tavsiye', badgeBg:'#3B6D11',
-    hook: n=>`Dürüst inceleme: 2 aydır kullanıyorum 👇`,
-    caption:(n,p)=>`"Çok sağlam, kurulum 5 dk. Işık rengi harika. Fiyatına göre inanılmaz kaliteli!" 🤍 Linke tıkla sen de gör.`,
-    cta:'İncele', ctaBg:'#3B6D11',
-    storyHook:n=>`POV: O ürünü\nnihayet buldun ✨`,
-    carouselCaption:n=>`"${n}'yı almanızı şiddetle tavsiye ederim" 🤍`,
-    carouselCta:'Sen de Bak',
-    cards:['2 ay önce aldım','Kurulum: 5 dk','Herkese öneririm'],
-    pillBg:'#EAF3DE', pillTxt:'#27500A'
-  },
-  social:{
-    badge:'⭐ 4.9/5 puan', badgeBg:'#854F0B',
-    hook: n=>`⭐⭐⭐⭐⭐ "Evin atmosferi değişti"`,
-    caption:(n,p)=>`"Aldım, çok memnunum. Metal gövde gerçekten sağlam, ışık rengi harika!" — Selin K. 🏠 ByLamp güvencesiyle kapınıza geliyor.`,
-    cta:'Sen de Katıl', ctaBg:'#854F0B',
-    storyHook:n=>`Müşteriler konuşuyor 👇\n"Evin atmosferi değişti"`,
-    carouselCaption:n=>`Gerçek alıcılar, gerçek yorumlar. ${n} → ⭐⭐⭐⭐⭐`,
-    carouselCta:'Yorumları Oku',
-    cards:['"Çok memnunum"','4.9/5 puan','%98 memnuniyet'],
-    pillBg:'#FAEEDA', pillTxt:'#633806'
-  }
+const STRAT={
+  conversion:{badge:'%50 indirim',badgeBg:'#c9432a',hook:n=>`${n} ile yaşam alanını dönüştür ✦`,caption:(n,p)=>`${n} — kalite ve estetiğin buluştuğu nokta. ✅ Metal gövde ✅ Ücretsiz kargo ✅ 14 gün iade`,cta:'Hemen Satın Al',ctaBg:'#2c2018',sHook:n=>`✨ En çok satılan\n${n}`,carCap:n=>`${n} koleksiyonunu keşfet 🏠`,carCta:'Koleksiyonu Gör',cards:['Öne çıkan','Metal gövde','%50 indirim'],pb:'#EEEDFE',pt:'#3C3489'},
+  flash:{badge:'⚡ Flash satış',badgeBg:'#E24B4A',hook:n=>`⚡ 24 saat kaldı — kaçırma!`,caption:(n,p)=>`⏰ FLASH SATIŞ — ${n} yarı fiyatına! 📦 Hızlı kargo · 🔄 14 gün iade`,cta:'Fırsatı Yakala',ctaBg:'#E24B4A',sHook:n=>`⚡ FLASH SATIŞ\n%50 indirim`,carCap:n=>`Flash fiyat bitmeden al! ${n} %50 indirimde 🔥`,carCta:'Fırsatı Yakala',cards:['⚡ Flash fiyat','Sınırlı stok','Son şans!'],pb:'#FCEBEB',pt:'#A32D2D'},
+  ugc:{badge:'⭐ Tavsiye',badgeBg:'#3B6D11',hook:n=>`Dürüst inceleme: 2 aydır kullanıyorum 👇`,caption:(n,p)=>`"Çok sağlam, kurulum 5 dk. Işık rengi harika. Fiyatına göre inanılmaz kaliteli!" 🤍 Linke tıkla sen de gör.`,cta:'İncele',ctaBg:'#3B6D11',sHook:n=>`POV: O ürünü\nnihayet buldun ✨`,carCap:n=>`"${n}'yı almanızı şiddetle tavsiye ederim" 🤍`,carCta:'Sen de Bak',cards:['2 ay önce aldım','Kurulum: 5 dk','Herkese öneririm'],pb:'#EAF3DE',pt:'#27500A'},
+  social:{badge:'⭐ 4.9/5 puan',badgeBg:'#854F0B',hook:n=>`⭐⭐⭐⭐⭐ "Evin atmosferi değişti"`,caption:(n,p)=>`"Aldım, çok memnunum. Metal gövde gerçekten sağlam, ışık rengi harika!" — Selin K. 🏠`,cta:'Sen de Katıl',ctaBg:'#854F0B',sHook:n=>`Müşteriler konuşuyor 👇\n"Evin atmosferi değişti"`,carCap:n=>`Gerçek alıcılar, gerçek yorumlar → ⭐⭐⭐⭐⭐`,carCta:'Yorumları Oku',cards:['"Çok memnunum"','4.9/5 puan','%98 memnuniyet'],pb:'#FAEEDA',pt:'#633806'}
 };
 
-function handleFile(input) {
-  const file = input.files[0]; if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    imgData = e.target.result;
-    document.getElementById('dropContent').innerHTML =
-      `<img src="${imgData}" class="img-thumb" alt=""><p style="font-size:11px;color:#888">${file.name}</p>`;
-    if(lastCopy) refreshPreviews();
+function handleFile(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    imgData=e.target.result;
+    document.getElementById('dropContent').innerHTML=`<img src="${imgData}" class="img-thumb" alt=""><div class="img-name">${f.name}</div>`;
+    if(lastCopy)refreshPreviews();
   };
-  reader.readAsDataURL(file);
+  r.readAsDataURL(f);
 }
 
-const dz = document.getElementById('dropZone');
-dz.addEventListener('dragover', e=>{e.preventDefault();dz.style.borderColor='#534AB7';dz.style.background='#f0eef8'});
-dz.addEventListener('dragleave',()=>{dz.style.borderColor='';dz.style.background=''});
+const dz=document.getElementById('dropZone');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
 dz.addEventListener('drop',e=>{
-  e.preventDefault(); dz.style.borderColor=''; dz.style.background='';
-  const file = e.dataTransfer.files[0];
-  if(file&&file.type.startsWith('image/')){
+  e.preventDefault();dz.classList.remove('drag');
+  const f=e.dataTransfer.files[0];
+  if(f&&f.type.startsWith('image/')){
     const r=new FileReader();
-    r.onload=ev=>{
-      imgData=ev.target.result;
-      document.getElementById('dropContent').innerHTML=`<img src="${imgData}" class="img-thumb" alt=""><p style="font-size:11px;color:#888">${file.name}</p>`;
-      if(lastCopy) refreshPreviews();
-    };
-    r.readAsDataURL(file);
+    r.onload=ev=>{imgData=ev.target.result;document.getElementById('dropContent').innerHTML=`<img src="${imgData}" class="img-thumb" alt=""><div class="img-name">${f.name}</div>`;if(lastCopy)refreshPreviews();};
+    r.readAsDataURL(f);
   }
 });
 
-function setPos(btn){document.querySelectorAll('[data-pos]').forEach(b=>b.classList.remove('on'));btn.classList.add('on');hookCfg.pos=btn.dataset.pos;if(lastCopy)refreshPreviews();}
-function setSize(btn){document.querySelectorAll('[data-size]').forEach(b=>b.classList.remove('on','on-dark'));btn.classList.add('on-dark');hookCfg.size=btn.dataset.size;if(lastCopy)refreshPreviews();}
-function setStyle(btn){document.querySelectorAll('[data-style]').forEach(b=>b.classList.remove('on'));btn.classList.add('on');hookCfg.style=btn.dataset.style;if(lastCopy)refreshPreviews();}
-function setColor(dot){document.querySelectorAll('.cdot').forEach(d=>d.classList.remove('on'));dot.classList.add('on');hookCfg.color=dot.dataset.color;if(lastCopy)refreshPreviews();}
-function setStrat(btn){document.querySelectorAll('.strat-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');activeStrategy=btn.dataset.s;}
-function toggleFmt(row){const f=row.dataset.f,chk=row.querySelector('.chk');if(activeFormats.has(f)){activeFormats.delete(f);chk.classList.remove('on')}else{activeFormats.add(f);chk.classList.add('on');}}
+function setPos(b){document.querySelectorAll('[data-pos]').forEach(x=>x.classList.remove('on'));b.classList.add('on');hCfg.pos=b.dataset.pos;if(lastCopy)refreshPreviews();}
+function setSize(b){document.querySelectorAll('[data-size]').forEach(x=>x.classList.remove('on','on2'));b.classList.add('on2');hCfg.size=b.dataset.size;if(lastCopy)refreshPreviews();}
+function setSt(b){document.querySelectorAll('[data-st]').forEach(x=>x.classList.remove('on'));b.classList.add('on');hCfg.st=b.dataset.st;if(lastCopy)refreshPreviews();}
+function setCol(d){document.querySelectorAll('.cdot').forEach(x=>x.classList.remove('on'));d.classList.add('on');hCfg.col=d.dataset.c;if(lastCopy)refreshPreviews();}
+function setStrat(b){document.querySelectorAll('.strat-btn').forEach(x=>x.classList.remove('on'));b.classList.add('on');activeS=b.dataset.s;}
+function togFmt(r){const f=r.dataset.f,c=r.querySelector('.chk');if(activeFmts.has(f)){activeFmts.delete(f);c.classList.remove('on')}else{activeFmts.add(f);c.classList.add('on');}}
+function onHook(){document.getElementById('hc').textContent=`${document.getElementById('hookText').value.length}/80`;if(lastCopy)refreshPreviews();}
 
-function onHookInput(){
-  const t=document.getElementById('hookText').value;
-  document.getElementById('hookChars').textContent=`${t.length} / 80`;
-  if(lastCopy) refreshPreviews();
-}
-
-function getHookCSS(small){
-  const sz=small?{sm:'9px',md:'11px',lg:'13px',xl:'16px'}[hookCfg.size]:SIZES[hookCfg.size];
-  const wt=WEIGHTS[hookCfg.size];
-  const c=hookCfg.color;
+function hookCSS(small){
+  const sz=small?{sm:'10px',md:'13px',lg:'16px',xl:'20px'}[hCfg.size]:SZ[hCfg.size];
+  const wt=SW[hCfg.size];
   let bg='',pd='0',br='0',ts='';
-  if(hookCfg.style==='pill'){bg='rgba(0,0,0,0.55)';pd='4px 10px';br='20px';}
-  if(hookCfg.style==='shadow'){ts='0 2px 8px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.8)';}
-  if(hookCfg.style==='outline'){ts='-1px -1px 0 rgba(0,0,0,.7),1px -1px 0 rgba(0,0,0,.7),-1px 1px 0 rgba(0,0,0,.7),1px 1px 0 rgba(0,0,0,.7)';}
-  return `font-size:${sz};font-weight:${wt};color:${c};line-height:1.35;background:${bg};padding:${pd};border-radius:${br};text-shadow:${ts};white-space:pre-line;display:inline-block`;
+  if(hCfg.st==='pill'){bg='rgba(0,0,0,.55)';pd='5px 12px';br='22px';}
+  if(hCfg.st==='shadow'){ts='0 2px 10px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.8)';}
+  if(hCfg.st==='outline'){ts='-1px -1px 0 rgba(0,0,0,.8),1px -1px 0 rgba(0,0,0,.8),-1px 1px 0 rgba(0,0,0,.8),1px 1px 0 rgba(0,0,0,.8)';}
+  return `font-size:${sz};font-weight:${wt};color:${hCfg.col};line-height:1.35;background:${bg};padding:${pd};border-radius:${br};text-shadow:${ts};white-space:pre-line;display:inline-block`;
+}
+function hookPos(bot){
+  if(hCfg.pos==='top-left')return 'top:14px;left:14px;';
+  if(hCfg.pos==='bot-left')return `bottom:${bot};left:14px;right:14px;`;
+  if(hCfg.pos==='center')return 'top:50%;left:0;right:0;transform:translateY(-50%);text-align:center;padding:0 14px;';
+  return `bottom:${bot};left:0;right:0;text-align:center;padding:0 14px;`;
+}
+function hookEl(txt,small,bot){
+  if(!txt)return '';
+  return `<div style="position:absolute;z-index:6;${hookPos(bot)}"><span style="${hookCSS(small)}">${txt.replace(/\n/g,'<br>')}</span></div>`;
 }
 
-function getPosCSS(bottom){
-  const p=hookCfg.pos;
-  if(p==='top-left') return 'top:32px;left:10px;';
-  if(p==='bottom-left') return `bottom:${bottom};left:10px;right:10px;`;
-  if(p==='center') return 'top:50%;left:0;right:0;transform:translateY(-50%);text-align:center;padding:0 10px;';
-  return `bottom:${bottom};left:0;right:0;text-align:center;padding:0 10px;`;
+function priceEl(p,op,fs='15px'){
+  if(!p)return '';
+  return `<div style="font-size:${fs};font-weight:700;color:#fff">${p}${op?`<span style="font-size:10px;opacity:.4;text-decoration:line-through;margin-left:6px">${op}</span>`:''}</div>`;
 }
-
-function hookEl(text,small,bottom){
-  if(!text) return '';
-  return `<div style="position:absolute;z-index:6;${getPosCSS(bottom)}"><span style="${getHookCSS(small)}">${text.replace(/\n/g,'<br>')}</span></div>`;
-}
-
 function escQ(s){return(s||'').replace(/"/g,'&quot;')}
-function priceEl(price,oldPrice,fs='14px'){
-  if(!price) return '';
-  return `<div style="font-size:${fs};font-weight:700;color:#fff">${price}${oldPrice?`<span style="font-size:9px;opacity:.4;text-decoration:line-through;margin-left:5px">${oldPrice}</span>`:''}</div>`;
-}
-
-function copyField(lbl,val,extra=''){
-  return `<div class="cfield${extra}" data-val="${escQ(val)}" onclick="copyThis(this)"><div class="cfield-lbl">${lbl}</div><div class="cfield-val">${(val||'').slice(0,80)}${(val||'').length>80?'…':''}</div></div>`;
-}
-function copyThis(el){
-  navigator.clipboard.writeText(el.dataset.val||'').then(()=>{
-    el.classList.add('ok');setTimeout(()=>el.classList.remove('ok'),1600);
-  });
-}
+function cf(lbl,val){return `<div class="cf" data-val="${escQ(val)}" onclick="copyThis(this)"><div class="cf-lbl">${lbl}</div><div class="cf-val">${(val||'').slice(0,90)}${(val||'').length>90?'…':''}</div></div>`;}
+function copyThis(el){navigator.clipboard.writeText(el.dataset.val||'').then(()=>{el.classList.add('ok');setTimeout(()=>el.classList.remove('ok'),1600);});}
 
 async function generate(){
-  if(!imgData){alert('Lütfen önce bir ürün görseli yükleyin.');return;}
-  if(activeFormats.size===0){alert('En az bir format seçin.');return;}
-
+  if(!imgData){alert('Önce ürün görseli yükleyin.');return;}
+  if(activeFmts.size===0){alert('En az bir format seçin.');return;}
   const btn=document.getElementById('genBtn');
   btn.disabled=true;
-  document.getElementById('genIcon').outerHTML='<div class="spinner" id="genIcon"></div>';
-  document.getElementById('genTxt').textContent='Oluşturuluyor...';
+  document.getElementById('gi').outerHTML='<div class="sp" id="gi"></div>';
+  document.getElementById('gt').textContent='Oluşturuluyor...';
   document.getElementById('statusTxt').textContent='AI metinler yazıyor...';
 
   const name=document.getElementById('prodName').value||'Ürün';
@@ -415,198 +344,183 @@ async function generate(){
   const brand=document.getElementById('prodBrand').value||'Marka';
   const userHook=document.getElementById('hookText').value.trim();
   const apiKey=document.getElementById('apiKey').value.trim();
-  const s=S[activeStrategy];
+  const s=STRAT[activeS];
 
-  let aiCopy=null;
+  let ai=null;
   if(apiKey){
     try{
       const res=await fetch('https://api.anthropic.com/v1/messages',{
         method:'POST',
         headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-        body:JSON.stringify({
-          model:'claude-sonnet-4-20250514', max_tokens:800,
-          system:`Sen uzman bir Meta reklam kreatif direktörüsün. Türkçe, kısa ve dönüşüm odaklı reklam metinleri yazarsın. SADECE JSON döndür, başka hiçbir şey yazma. Format: {"caption":"...","storyHook":"...","cta":"...","carouselCaption":"..."}`,
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,
+          system:`Meta reklam kreatif direktörü olarak Türkçe kısa metinler yaz. SADECE JSON döndür: {"caption":"...","storyHook":"...","cta":"...","carCap":"..."}`,
           messages:[{role:'user',content:[
             {type:'image',source:{type:'base64',media_type:'image/jpeg',data:imgData.split(',')[1]}},
-            {type:'text',text:`Ürün: ${name}\nFiyat: ${price}${oldPrice?' (eski: '+oldPrice+')':''}\nMarka: ${brand}\nStrateji: ${activeStrategy}${userHook?'\nKullanıcı kanca metin: '+userHook:''}\n\nBu ürün görselini analiz et ve Meta reklam metinleri yaz. caption max 100 karakter, storyHook 2 satır \\n ile ayır, cta max 3 kelime.`}
-          ]}]
-        })
+            {type:'text',text:`Ürün:${name} Fiyat:${price} Eski:${oldPrice} Marka:${brand} Strateji:${activeS}${userHook?' Hook:'+userHook:''}\nMeta reklam metinleri yaz. caption max 100 karakter, storyHook iki satır \\n ile, cta max 3 kelime.`}
+          ]}]})
       });
-      const data=await res.json();
-      const raw=data.content?.map(i=>i.text||'').join('').replace(/```json|```/g,'').trim();
-      aiCopy=JSON.parse(raw);
-    }catch(e){console.log('AI error:',e);}
+      const d=await res.json();
+      ai=JSON.parse(d.content?.map(i=>i.text||'').join('').replace(/```json|```/g,'').trim());
+    }catch(e){}
   }
 
   const copy={
-    hook: userHook || (aiCopy?.hook) || s.hook(name),
-    caption: aiCopy?.caption || s.caption(name,price),
-    storyHook: userHook || aiCopy?.storyHook || s.storyHook(name),
-    cta: aiCopy?.cta || s.cta,
-    carouselCaption: aiCopy?.carouselCaption || s.carouselCaption(name)
+    hook: userHook||ai?.hook||s.hook(name),
+    caption: ai?.caption||s.caption(name,price),
+    storyHook: userHook||ai?.storyHook||s.sHook(name),
+    cta: ai?.cta||s.cta,
+    carCap: ai?.carCap||s.carCap(name)
   };
   lastCopy=copy;
   renderAll(copy,s,name,price,oldPrice,brand);
 
   btn.disabled=false;
-  document.getElementById('genIcon').outerHTML='<span id="genIcon">✦</span>';
-  document.getElementById('genTxt').textContent='Yeniden oluştur';
-  document.getElementById('statusTxt').textContent=`${activeFormats.size} format oluşturuldu · Metinlere tıklayarak kopyala`;
+  document.getElementById('gi').outerHTML='<span id="gi">✦</span>';
+  document.getElementById('gt').textContent='Yeniden oluştur';
+  document.getElementById('statusTxt').textContent=`${activeFmts.size} format hazır · Metinlere tıkla → kopyala`;
 }
 
 function refreshPreviews(){
-  if(!lastCopy||!imgData) return;
+  if(!lastCopy||!imgData)return;
   const name=document.getElementById('prodName').value||'Ürün';
   const price=document.getElementById('prodPrice').value||'';
-  const oldPrice=document.getElementById('prodOldPrice').value||'';
+  const op=document.getElementById('prodOldPrice').value||'';
   const brand=document.getElementById('prodBrand').value||'Marka';
-  const userHook=document.getElementById('hookText').value.trim();
-  const s=S[activeStrategy];
-  lastCopy.hook=userHook||s.hook(name);
-  lastCopy.storyHook=userHook||lastCopy.storyHook;
-  renderAll(lastCopy,s,name,price,oldPrice,brand);
+  const uh=document.getElementById('hookText').value.trim();
+  const s=STRAT[activeS];
+  lastCopy.hook=uh||s.hook(name);
+  lastCopy.storyHook=uh||lastCopy.storyHook;
+  renderAll(lastCopy,s,name,price,op,brand);
 }
 
-function renderAll(copy,s,name,price,oldPrice,brand){
+function renderAll(copy,s,name,price,op,brand){
   const canvas=document.getElementById('canvas');
   document.getElementById('emptyState')?.remove();
   canvas.innerHTML='';
   const fns=[];
-  if(activeFormats.has('feed')) fns.push(()=>rFeed(copy,s,name,price,oldPrice,brand));
-  if(activeFormats.has('story')) fns.push(()=>rStory(copy,s,name,price,oldPrice,brand));
-  if(activeFormats.has('portrait')) fns.push(()=>rPortrait(copy,s,name,price,oldPrice,brand));
-  if(activeFormats.has('carousel')) fns.push(()=>rCarousel(copy,s,name,price,oldPrice,brand));
+  if(activeFmts.has('feed'))fns.push(()=>rFeed(copy,s,name,price,op,brand));
+  if(activeFmts.has('story'))fns.push(()=>rStory(copy,s,name,price,op,brand));
+  if(activeFmts.has('portrait'))fns.push(()=>rPortrait(copy,s,name,price,op,brand));
+  if(activeFmts.has('carousel'))fns.push(()=>rCarousel(copy,s,name,price,op,brand));
   fns.forEach((fn,i)=>{
-    if(i>0){const d=document.createElement('div');d.className='section-sep';canvas.appendChild(d);}
+    if(i>0){const d=document.createElement('div');d.className='sep';canvas.appendChild(d);}
     const w=document.createElement('div');w.innerHTML=fn();canvas.appendChild(w);
-    w.querySelectorAll('.cfield').forEach(el=>el.addEventListener('click',()=>copyThis(el)));
+    w.querySelectorAll('.cf').forEach(el=>el.addEventListener('click',()=>copyThis(el)));
   });
 }
 
-function adImg(h,extra=''){
-  return `<img src="${imgData}" style="width:100%;height:${h}px;object-fit:cover;display:block${extra?';'+extra:''}" alt="" onerror="this.style.background='#e0d8cc'">`;
-}
+function aimg(h,extra=''){return `<img src="${imgData}" style="width:100%;height:${h}px;object-fit:cover;display:block${extra?';'+extra:''}" alt="" onerror="this.style.background='#e0d8cc'">`;}
 
-function rFeed(copy,s,name,price,oldPrice,brand){
-  const hookTxt=document.getElementById('hookText').value.trim()||copy.hook;
-  const priceBottom=price?'42px':'14px';
+function rFeed(copy,s,name,price,op,brand){
+  const ht=document.getElementById('hookText').value.trim()||copy.hook;
+  const pbot=price?'52px':'16px';
   return `<div>
-  <div class="row-label">Feed kare <span class="format-tag" style="background:${s.pillBg};color:${s.pillTxt}">1080×1080 · 1:1</span></div>
-  <div class="creative-row">
-    <div class="phone" style="width:220px">
-      <div class="phone-top"><div class="p-av"></div><div><div class="p-name">${brand}</div><div class="p-sp">Sponsorlu</div></div><div class="p-dots">···</div></div>
-      <div class="ad-canvas" style="height:220px">
-        ${adImg(220)}
-        <div class="ad-ol" style="background:linear-gradient(to bottom,rgba(0,0,0,0) 28%,rgba(10,5,2,.9) 100%)"></div>
+  <div class="sec-head">Feed kare <span class="ftag" style="background:${s.pb};color:${s.pt}">1080×1080 · 1:1</span></div>
+  <div class="preview-area">
+    <div class="mock-feed">
+      <div class="mock-top"><div class="m-av"></div><div><div class="m-name">${brand}</div><div class="m-sp">Sponsorlu</div></div><div class="m-dots">···</div></div>
+      <div class="ad-wrap" style="height:340px">
+        ${aimg(340)}
+        <div class="ad-ol" style="background:linear-gradient(to bottom,rgba(0,0,0,0) 25%,rgba(8,4,1,.92) 100%)"></div>
         <div class="ad-badge" style="background:${s.badgeBg}">${s.badge}</div>
-        ${hookEl(hookTxt,false,priceBottom)}
-        ${price?`<div style="position:absolute;bottom:12px;left:10px;right:10px;z-index:5">${priceEl(price,oldPrice)}</div>`:''}
+        ${hookEl(ht,false,pbot)}
+        ${price?`<div style="position:absolute;bottom:14px;left:14px;right:14px;z-index:5">${priceEl(price,op)}</div>`:''}
       </div>
-      <div class="phone-cap">${copy.caption.slice(0,90)}${copy.caption.length>90?'…':''}</div>
-      <div class="phone-bot"><button class="p-cta" style="background:${s.ctaBg}">${copy.cta}</button><span class="p-like">♡ Beğen · Paylaş</span></div>
+      <div class="mock-cap">${copy.caption.slice(0,100)}${copy.caption.length>100?'…':''}</div>
+      <div class="mock-bot"><button class="m-cta" style="background:${s.ctaBg}">${copy.cta}</button><span class="m-like">♡ Beğen · Yorum · Paylaş</span></div>
     </div>
-    <div class="copy-wrap">
-      <div class="copy-fields">
-        ${copyField('Kanca metin (görsel üzeri)',hookTxt)}
-        ${copyField('Caption / ana metin',copy.caption)}
-        ${copyField('CTA butonu',copy.cta)}
-      </div>
-      <div class="copy-hint">Metne tıkla → panoya kopyala</div>
+    <div class="copy-panel">
+      ${cf('Kanca metin — görsel üzeri',ht)}
+      ${cf('Caption / ana metin',copy.caption)}
+      ${cf('CTA butonu',copy.cta)}
+      <div class="copy-hint">Tıkla → panoya kopyala</div>
     </div>
   </div></div>`;
 }
 
-function rStory(copy,s,name,price,oldPrice,brand){
-  const hookTxt=document.getElementById('hookText').value.trim()||copy.storyHook;
-  const lines=hookTxt.split('\n');
-  const priceBot=price?'56px':'40px';
+function rStory(copy,s,name,price,op,brand){
+  const ht=document.getElementById('hookText').value.trim()||copy.storyHook;
+  const pbot=price?'68px':'48px';
   return `<div>
-  <div class="row-label">Story / Reels <span class="format-tag" style="background:${s.pillBg};color:${s.pillTxt}">1080×1920 · 9:16</span></div>
-  <div class="creative-row">
-    <div class="story" style="width:136px;height:242px">
-      ${adImg(242,'position:absolute;inset:0;filter:brightness(.72)')}
-      <div class="story-ol" style="background:linear-gradient(to bottom,rgba(0,0,0,.62) 0%,transparent 30%,transparent 52%,rgba(0,0,0,.85) 100%)"></div>
-      <div class="story-top">
-        <div class="story-segs"><div class="story-seg d"></div><div class="story-seg d" style="flex:.4;opacity:.5"></div><div class="story-seg"></div></div>
-        <div class="story-user"><div class="s-av"></div><div><div class="s-nm">${brand.toLowerCase().replace(/\s+/g,'')}</div><div class="s-sp">Sponsorlu</div></div></div>
+  <div class="sec-head">Story / Reels <span class="ftag" style="background:${s.pb};color:${s.pt}">1080×1920 · 9:16</span></div>
+  <div class="preview-area">
+    <div class="mock-story" style="width:210px;height:373px">
+      ${aimg(373,'position:absolute;inset:0;filter:brightness(.7)')}
+      <div class="st-ol" style="background:linear-gradient(to bottom,rgba(0,0,0,.65) 0%,transparent 28%,transparent 50%,rgba(0,0,0,.88) 100%)"></div>
+      <div class="st-top">
+        <div class="st-segs"><div class="st-seg d"></div><div class="st-seg d" style="flex:.4;opacity:.5"></div><div class="st-seg"></div></div>
+        <div class="st-user"><div class="st-av"></div><div><div class="st-nm">${brand.toLowerCase().replace(/\s+/g,'')}</div><div class="st-sp">Sponsorlu</div></div></div>
       </div>
-      ${hookEl(hookTxt,true,priceBot)}
-      ${price?`<div style="position:absolute;bottom:52px;left:0;right:0;text-align:center;z-index:5"><div style="font-size:13px;font-weight:700;color:#fff">${price}</div>${oldPrice?`<div style="font-size:9px;color:rgba(255,255,255,.4);text-decoration:line-through">${oldPrice}</div>`:''}</div>`:''}
-      <div class="story-cta"><div class="story-swipe">↑ yukarı kaydır</div><div class="story-btn">${copy.cta} →</div></div>
+      ${hookEl(ht,false,pbot)}
+      ${price?`<div style="position:absolute;bottom:62px;left:0;right:0;text-align:center;z-index:5"><div style="font-size:16px;font-weight:700;color:#fff">${price}</div>${op?`<div style="font-size:10px;color:rgba(255,255,255,.4);text-decoration:line-through">${op}</div>`:''}</div>`:''}
+      <div class="st-cta"><div class="st-swipe">↑ yukarı kaydır</div><div class="st-btn">${copy.cta} →</div></div>
     </div>
-    <div class="copy-wrap">
-      <div class="copy-fields">
-        ${copyField('Story hook',hookTxt)}
-        ${copyField('CTA',copy.cta)}
-        ${copyField('Caption (bio link için)',copy.caption)}
-      </div>
-      <div class="warn-box" style="margin-top:6px">Güvenli alan: üst %14 (~268px) ve alt %35 (~672px) Meta UI için boş bırak. Kanca metin orta %51'e konumlandır.</div>
+    <div class="copy-panel">
+      ${cf('Story hook — görsel üzeri',ht)}
+      ${cf('CTA',copy.cta)}
+      ${cf('Caption (bio link için)',copy.caption)}
+      <div class="warn">Güvenli alan: üst %14 (~268px) ve alt %35 (~672px) Meta UI için boş bırak. Kanca metin ortada %51'e konumlanmalı.</div>
     </div>
   </div></div>`;
 }
 
-function rPortrait(copy,s,name,price,oldPrice,brand){
-  const hookTxt=document.getElementById('hookText').value.trim()||copy.hook;
-  const priceBot=price?'34px':'10px';
+function rPortrait(copy,s,name,price,op,brand){
+  const ht=document.getElementById('hookText').value.trim()||copy.hook;
+  const pbot=price?'44px':'14px';
   return `<div>
-  <div class="row-label">Feed dikey <span class="format-tag" style="background:${s.pillBg};color:${s.pillTxt}">1080×1350 · 4:5</span></div>
-  <div class="creative-row">
-    <div class="phone" style="width:185px">
-      <div class="phone-top"><div class="p-av"></div><div><div class="p-name">${brand}</div><div class="p-sp">Sponsorlu</div></div><div class="p-dots">···</div></div>
-      <div class="ad-canvas" style="height:232px">
-        ${adImg(232)}
-        <div class="ad-ol" style="background:linear-gradient(to bottom,rgba(0,0,0,0) 38%,rgba(10,5,2,.9) 100%)"></div>
+  <div class="sec-head">Feed dikey <span class="ftag" style="background:${s.pb};color:${s.pt}">1080×1350 · 4:5</span></div>
+  <div class="preview-area">
+    <div class="mock-pt">
+      <div class="mock-top"><div class="m-av"></div><div><div class="m-name">${brand}</div><div class="m-sp">Sponsorlu</div></div><div class="m-dots">···</div></div>
+      <div class="ad-wrap" style="height:300px">
+        ${aimg(300)}
+        <div class="ad-ol" style="background:linear-gradient(to bottom,rgba(0,0,0,0) 35%,rgba(8,4,1,.92) 100%)"></div>
         <div class="ad-badge" style="background:${s.badgeBg}">${s.badge}</div>
-        ${hookEl(hookTxt,false,priceBot)}
-        ${price?`<div style="position:absolute;bottom:10px;left:8px;right:8px;z-index:5">${priceEl(price,oldPrice,'13px')}</div>`:''}
+        ${hookEl(ht,false,pbot)}
+        ${price?`<div style="position:absolute;bottom:12px;left:12px;right:12px;z-index:5">${priceEl(price,op,'14px')}</div>`:''}
       </div>
-      <div class="phone-bot"><button class="p-cta" style="background:${s.ctaBg};font-size:10px">${copy.cta}</button></div>
+      <div class="mock-bot"><button class="m-cta" style="background:${s.ctaBg}">${copy.cta}</button></div>
     </div>
-    <div class="copy-wrap">
-      <div class="copy-fields">
-        ${copyField('Kanca metin',hookTxt)}
-        ${copyField('Caption',copy.caption)}
-        ${copyField('CTA',copy.cta)}
-      </div>
+    <div class="copy-panel">
+      ${cf('Kanca metin',ht)}
+      ${cf('Caption',copy.caption)}
+      ${cf('CTA',copy.cta)}
     </div>
   </div></div>`;
 }
 
-function rCarousel(copy,s,name,price,oldPrice,brand){
-  const hookTxt=document.getElementById('hookText').value.trim()||copy.hook;
+function rCarousel(copy,s,name,price,op,brand){
+  const ht=document.getElementById('hookText').value.trim()||copy.hook;
   return `<div>
-  <div class="row-label">Carousel <span class="format-tag" style="background:${s.pillBg};color:${s.pillTxt}">1080×1080 / kart</span></div>
-  <div class="creative-row">
-    <div class="phone" style="width:260px">
-      <div class="phone-top"><div class="p-av"></div><div><div class="p-name">${brand}</div><div class="p-sp">Sponsorlu</div></div><div class="p-dots">···</div></div>
-      <div class="phone-cap">${copy.carouselCaption}</div>
-      <div class="carousel-slides">
-        <div class="ca-slide first" style="position:relative">
+  <div class="sec-head">Carousel <span class="ftag" style="background:${s.pb};color:${s.pt}">1080×1080 / kart</span></div>
+  <div class="preview-area">
+    <div class="mock-car">
+      <div class="mock-top"><div class="m-av"></div><div><div class="m-name">${brand}</div><div class="m-sp">Sponsorlu</div></div><div class="m-dots">···</div></div>
+      <div class="mock-cap">${copy.carCap}</div>
+      <div class="car-slides">
+        <div class="ca-sl first" style="position:relative">
           <img src="${imgData}" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" alt="">
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.75) 100%)"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 45%,rgba(0,0,0,.78) 100%)"></div>
           <div class="ca-badge">${s.cards[0]}</div>
-          ${hookEl(hookTxt,true,'24px')}
-          <div class="ca-foot"><div class="ca-title">${hookTxt.replace(/\n.*/,'').slice(0,26)}</div><div class="ca-sub">${price||s.cards[1]}</div></div>
+          ${hookEl(ht,true,'32px')}
+          <div class="ca-foot"><div class="ca-t">${ht.replace(/\n.*/,'').slice(0,28)}</div><div class="ca-s">${price||s.cards[1]}</div></div>
         </div>
-        <div class="ca-slide">
+        <div class="ca-sl">
           <img src="${imgData}" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:brightness(.88)" alt="">
-          <div class="ca-foot"><div class="ca-title">${s.cards[1]}</div><div class="ca-sub">${oldPrice||'Ücretsiz kargo'}</div></div>
+          <div class="ca-foot"><div class="ca-t">${s.cards[1]}</div><div class="ca-s">${op||'Ücretsiz kargo'}</div></div>
+        </div>
+        <div class="ca-sl" style="flex:0 0 calc(48% - 4px);border-radius:12px;overflow:hidden;border:1px solid #e0d8ce;background:#534AB7;display:flex;align-items:center;justify-content:center;aspect-ratio:1">
+          <div style="text-align:center;padding:14px"><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px">${s.cards[2]}</div><div style="font-size:11px;color:rgba(255,255,255,.7)">${price||''}</div><div style="margin-top:10px;background:#fff;color:#534AB7;font-size:11px;font-weight:700;padding:5px 14px;border-radius:16px">${copy.cta}</div></div>
         </div>
       </div>
-      <div class="ca-dots">
-        <div style="width:14px;height:3px;border-radius:2px;background:#534AB7"></div>
-        <div style="width:5px;height:3px;border-radius:2px;background:#e0d8ce"></div>
-        <div style="width:5px;height:3px;border-radius:2px;background:#e0d8ce"></div>
-      </div>
-      <div class="phone-bot"><button class="p-cta" style="background:${s.ctaBg}">${s.carouselCta}</button><span class="p-like">♡ Beğen · Paylaş</span></div>
+      <div class="ca-dots"><div style="width:16px;height:3px;border-radius:2px;background:#534AB7"></div><div style="width:5px;height:3px;border-radius:2px;background:#e0d8ce"></div><div style="width:5px;height:3px;border-radius:2px;background:#e0d8ce"></div></div>
+      <div class="mock-bot"><button class="m-cta" style="background:${s.ctaBg}">${s.carCta}</button><span class="m-like">♡ Beğen · Yorum · Paylaş</span></div>
     </div>
-    <div class="copy-wrap">
-      <div class="copy-fields">
-        ${copyField('1. kart hook',hookTxt)}
-        ${copyField('Carousel caption',copy.carouselCaption)}
-        ${copyField('CTA',s.carouselCta)}
-        ${copyField('Kart sırası',s.cards.join(' → '))}
-      </div>
+    <div class="copy-panel">
+      ${cf('1. kart hook',ht)}
+      ${cf('Carousel caption',copy.carCap)}
+      ${cf('CTA',s.carCta)}
+      ${cf('Kart sırası',s.cards.join(' → '))}
     </div>
   </div></div>`;
 }
